@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    public function __construct($type = null)
-    {
-        parent::__construct();
-        $this->setTable("Member");
-    }
+    protected $table = 'Member';
+    protected $primaryKey = 'userid';
 
     public $timestamps = false;
 
@@ -19,6 +16,6 @@ class Member extends Model
     ];
 
     protected $hidden = [
-        'userid','created_at', 'updated_at', 'deleted_at'
+        'userid', 'created_at', 'updated_at', 'deleted_at'
     ];
 }
