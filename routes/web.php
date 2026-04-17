@@ -11,16 +11,14 @@
 |
 */
 
-// Root route (from before - keep it)
 $router->get('/', function () use ($router) {
     return response()->json([
         'message' => 'Lumen API is working'
     ]);
 });
 
-// Step 3: Member API routes
-$router->group(['prefix' => 'api'], function () use ($router)
-{
+$router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('members', ['uses' => 'MemberController@showAllMembers']);
     $router->get('members/{id}', ['uses' => 'MemberController@showOneMember']);
+    $router->get('member/{id}/bookings', ['uses' => 'MemberController@showMemberBookings']);
 });
