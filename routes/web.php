@@ -8,14 +8,19 @@
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
 |
 */
 
-// Root route (test API)
+// Root route (from before - keep it)
 $router->get('/', function () use ($router) {
     return response()->json([
         'message' => 'Lumen API is working'
     ]);
+});
+
+// Step 3: Member API routes
+$router->group(['prefix' => 'api'], function () use ($router)
+{
+    $router->get('members', ['uses' => 'MemberController@showAllMembers']);
+    $router->get('members/{id}', ['uses' => 'MemberController@showOneMember']);
 });
